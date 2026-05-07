@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Bones Wings – Winnipeg's Best Wings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8500A;
+      --orange-light: #ff6b2b;
+      --bg: #0e0e0e;
+      --bg2: #161616;
+      --bg3: #1e1e1e;
+      --border: #2a2a2a;
+      --text: #ffffff;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      color: var(--orange);
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 80%, rgba(232,80,10,0.12) 0%, transparent 70%),
+        var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(72px, 14vw, 140px);
+      line-height: 0.9;
+      letter-spacing: 6px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 400px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid #333;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: border-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: #666; transform: translateY(-1px); }
+    .hero-address {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+
+    /* SECTION BASE */
+    section { padding: 80px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(36px, 6vw, 56px);
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+      line-height: 1;
+    }
+
+    /* FLAVOURS */
+    #flavours { background: var(--bg2); }
+    .flavours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .flavour-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .flavour-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+    .flavour-icon { font-size: 32px; margin-bottom: 10px; }
+    .flavour-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+    .flavour-heat {
+      font-size: 11px;
+      color: var(--orange);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* MENU */
+    #menu { background: var(--bg); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .menu-category {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .menu-cat-header {
+      background: var(--orange);
+      padding: 12px 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+    .menu-items { padding: 16px 20px; }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-name { font-size: 14px; }
+    .menu-item-price { font-size: 14px; font-weight: 600; color: var(--orange); }
+
+    /* HOURS */
+    #hours { background: var(--bg2); }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .hour-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .hour-day { font-size: 14px; color: var(--muted); }
+    .hour-time { font-size: 14px; font-weight: 500; }
+    .hour-closed { color: #444; }
+    .today-badge {
+      background: var(--orange);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    /* FIND US */
+    #find { background: var(--bg); }
+    .find-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .find-info h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .find-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .find-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+    .find-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .find-text strong { color: #fff; }
+    .map-placeholder {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .map-placeholder .map-icon { font-size: 40px; }
+
+    /* FOOTER */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      color: var(--orange);
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+    .footer-phone {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+      text-decoration: none;
+      display: block;
+    }
+    .footer-addr { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy { font-size: 12px; color: #333; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .find-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 72px; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-label, .hero-title, .hero-sub, .hero-btns {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-label { animation-delay: 0.1s; }
+    .hero-title { animation-delay: 0.2s; }
+    .hero-sub { animation-delay: 0.35s; }
+    .hero-btns { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Little Bones</a>
+    <ul class="nav-links">
+      <li><a href="#flavours">Flavours</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#find">Find Us</a></li>
+    </ul>
+    <a href="tel:2047772663" class="nav-cta">Call Us</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-label">Winnipeg's Best Wings Since Forever</p>
+    <h1 class="hero-title">Little<br><span>Bones</span></h1>
+    <p class="hero-sub">Crispy wings. 20+ bold flavours. No compromises.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">See the Menu</a>
+      <a href="#hours" class="btn-outline">Hours & Location</a>
+    </div>
+    <p class="hero-address">123 Regent Ave W, Winnipeg · (204) 777-2663</p>
+  </section>
+
+  <!-- FLAVOURS -->
+  <section id="flavours">
+    <div class="container">
+      <p class="section-label">Over 20 Options</p>
+      <h2 class="section-title">Pick Your Flavour</h2>
+      <div class="flavours-grid">
+        <div class="flavour-card">
+          <div class="flavour-icon">🍯</div>
+          <p class="flavour-name">Honey Garlic</p>
+          <p class="flavour-heat">Mild</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🔥</div>
+          <p class="flavour-name">Nashville Hot</p>
+          <p class="flavour-heat">🌶🌶🌶 Hot</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🐃</div>
+          <p class="flavour-name">Buffalo Classic</p>
+          <p class="flavour-heat">Medium</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🍋</div>
+          <p class="flavour-name">Lemon Pepper</p>
+          <p class="flavour-heat">Mild</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🧄</div>
+          <p class="flavour-name">Garlic Parmesan</p>
+          <p class="flavour-heat">Mild</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🌶️</div>
+          <p class="flavour-name">Mango Habanero</p>
+          <p class="flavour-heat">🌶🌶 Medium-Hot</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">🫙</div>
+          <p class="flavour-name">BBQ Smoky</p>
+          <p class="flavour-heat">Mild</p>
+        </div>
+        <div class="flavour-card">
+          <div class="flavour-icon">💀</div>
+          <p class="flavour-name">Reaper's Revenge</p>
+          <p class="flavour-heat">🌶🌶🌶🌶 Extreme</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <p class="section-label">What We Serve</p>
+      <h2 class="section-title">The Menu</h2>
+      <div class="menu-grid">
+        <div class="menu-category">
+          <div class="menu-cat-header">Wings</div>
+          <div class="menu-items">
+            <div class="menu-item"><span class="menu-item-name">6 Wings</span><span class="menu-item-price">$11</span></div>
+            <div class="menu-item"><span class="menu-item-name">12 Wings</span><span class="menu-item-price">$20</span></div>
+            <div class="menu-item"><span class="menu-item-name">18 Wings</span><span class="menu-item-price">$28</span></div>
+            <div class="menu-item"><span class="menu-item-name">Party Pack (50)</span><span class="menu-item-price">$69</span></div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <div class="menu-cat-header">Sides</div>
+          <div class="menu-items">
+            <div class="menu-item"><span class="menu-item-name">Fries</span><span class="menu-item-price">$5</span></div>
+            <div class="menu-item"><span class="menu-item-name">Poutine</span><span class="menu-item-price">$9</span></div>
+            <div class="menu-item"><span class="menu-item-name">Coleslaw</span><span class="menu-item-price">$4</span></div>
+            <div class="menu-item"><span class="menu-item-name">Dipping Sauce</span><span class="menu-item-price">$1.50</span></div>
+          </div>
+        </div>
+        <div class="menu-category">
+          <div class="menu-cat-header">Drinks</div>
+          <div class="menu-items">
+            <div class="menu-item"><span class="menu-item-name">Pop / Juice</span><span class="menu-item-price">$3</span></div>
+            <div class="menu-item"><span class="menu-item-name">Draft Beer</span><span class="menu-item-price">$7</span></div>
+            <div class="menu-item"><span class="menu-item-name">Pitcher</span><span class="menu-item-price">$22</span></div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:20px; font-size:12px; color:#444;">* Prices approximate — check with us for the latest menu</p>
+    </div>
+  </section>
+
+  <!-- HOURS -->
+  <section id="hours">
+    <div class="container">
+      <p class="section-label">We're Open</p>
+      <h2 class="section-title">Hours</h2>
+      <div class="hours-grid">
+        <div class="hour-row">
+          <span class="hour-day">Sunday</span>
+          <span class="hour-time">4:30 pm – 9:00 pm</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Monday</span>
+          <span class="hour-time hour-closed">Closed</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Tuesday</span>
+          <span class="hour-time">4:30 pm – 9:00 pm</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Wednesday</span>
+          <span class="hour-time">4:30 pm – 9:00 pm</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Thursday <span class="today-badge">Today</span></span>
+          <span class="hour-time">4:30 pm – 9:00 pm</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Friday</span>
+          <span class="hour-time">11:30–1:30 pm · 4:00–10:00 pm</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Saturday</span>
+          <span class="hour-time">4:00 pm – 10:00 pm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section id="find">
+    <div class="container">
+      <p class="section-label">Come Visit</p>
+      <h2 class="section-title">Find Us</h2>
+      <div class="find-grid">
+        <div class="find-info">
+          <h3>Little Bones Wings</h3>
+          <div class="find-detail">
+            <span class="find-icon">📍</span>
+            <p class="find-text"><strong>123 Regent Avenue West</strong><br>Winnipeg, Manitoba R2C 1R1</p>
+          </div>
+          <div class="find-detail">
+            <span class="find-icon">📞</span>
+            <p class="find-text"><strong>(204) 777-2663</strong><br>Call ahead for large groups</p>
+          </div>
+          <div class="find-detail">
+            <span class="find-icon">🅿️</span>
+            <p class="find-text">Free parking available on site</p>
+          </div>
+          <a href="https://maps.google.com/?q=123+Regent+Ave+W+Winnipeg" target="_blank" class="btn-primary" style="margin-top:16px; font-size:13px; padding:12px 28px;">Get Directions →</a>
+        </div>
+        <div class="map-placeholder">
+          <span class="map-icon">🗺️</span>
+          <span>123 Regent Ave W, Winnipeg</span>
+          <a href="https://maps.google.com/?q=123+Regent+Ave+W+Winnipeg" target="_blank" style="color:var(--orange); font-size:13px;">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Little Bones</p>
+    <a href="tel:2047772663" class="footer-phone">(204) 777-2663</a>
+    <p class="footer-addr">123 Regent Avenue West, Winnipeg, MB R2C 1R1</p>
+    <div class="footer-links">
+      <a href="#flavours">Flavours</a>
+      <a href="#menu">Menu</a>
+      <a href="#hours">Hours</a>
+      <a href="#find">Find Us</a>
+      <a href="https://www.facebook.com/littleboneswings" target="_blank">Facebook</a>
+    </div>
+    <p class="footer-copy">© Little Bones Wings Inc. · Demo page – not official</p>
+  </footer>
+
+</body>
+</html>
